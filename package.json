@@ -1,0 +1,11 @@
+{
+    "name": "com.beck.phaserecs",
+    "version": "0.0.1",
+    "displayName": "Phaser ECS",
+    "description": "Lightweight Entity Component System package for Unity",
+    "unity": "2019.1",
+    "author": {
+        "name": "Beck Sebenius",
+        "url": "https://github.com/becksebenius"
+    }
+}
