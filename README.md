@@ -169,6 +169,6 @@ public class MyGameObjectSystem : GameObjectSystem<MyGameObjectSystem.ComponentS
 
 ## Performance
 
-Although I have not benchmarked Phaser, it has been built in such away to specifically avoid runtime memory allocations. Phaser heavily leverages generic type parameters so that all message buffers are allocated upfront.
+Although I have not benchmarked Phaser, it has been built in such away to specifically avoid runtime memory allocations. Phaser heavily leverages generic type parameters so that all message buffers are allocated upfront. There are some cases where a message buffer might expand, thus causing a new allocation, but these instances should be rare and non-recurring. Future improvements could be made to specify message buffer sizes upfront (perhaps based on past runtime data) but the impact is minimal enough that it's probably not necessary.
 
 On runtime performance, Phaser is *not* designed to be cache-friendly. If you are looking for a cache-friendly solution, you should be looking at Unity's DOTS framework. However, Phaser should still have performance on par with traditionaly gameobject workflows, but with the added benefit of easy-to-use messaging and a clean separation of behavior and state.
