@@ -130,14 +130,6 @@ public struct MyGameObjectMessage : IGameObjectMessage
 
 public class MyGameObjectSystem : GameObjectSystem<MyGameObjectSystem.ComponentSet>
 {
-	/*
-		The generic parameter for GameObjectSystem must be a struct
-		Each field defined in the component set is automatically populated 
-			for each GameObject that is considered by this system
-		Each field in the component set must be a type that derives from UnityEngine.Component
-		Any game object that does not contain all non-optional components as defined in the component set
-			will not be added to this system
-	*/
 	public struct ComponentSet
 	{
 		public Transform Transform;
