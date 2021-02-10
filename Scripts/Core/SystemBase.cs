@@ -27,7 +27,7 @@
 
         void IEcsSystem.QueueMessage<TMessage>(in TMessage message)
         {
-            if(!messageListeners.HasListenerForType<TMessage>())
+            if(thisAsGenericMessageListener == null && !messageListeners.HasListenerForType<TMessage>())
             {
                 return;
             }
