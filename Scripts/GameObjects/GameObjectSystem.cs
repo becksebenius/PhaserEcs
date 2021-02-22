@@ -11,6 +11,7 @@ namespace Phaser
     }
 
     public class OptionalAttribute : Attribute { }
+    public class FromParentAttribute : Attribute { }
 
     public abstract class GameObjectSystem<TComponentSet> : SystemBase, IGameObjectSystem
         where TComponentSet : struct

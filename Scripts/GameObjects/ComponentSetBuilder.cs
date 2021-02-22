@@ -12,6 +12,7 @@ namespace Phaser
         {
             public FieldInfo field;
             public bool optional;
+            public bool fromParent;
             public Type type;
         }
 
@@ -34,11 +35,13 @@ namespace Phaser
                 }
 
                 bool isOptional = fieldInfo.GetCustomAttribute<OptionalAttribute>() != null;
+                bool isFromParent = fieldInfo.GetCustomAttribute<FromParentAttribute>() != null;
 
                 fields.Add(new ComponentField()
                 {
                     field = fieldInfo,
                     optional = isOptional,
+                    fromParent = isFromParent,
                     type = type
                 });
             }
@@ -52,7 +55,15 @@ namespace Phaser
             for (int i = 0; i < fields.Count; ++i)
             {
                 var field = fields[i];
-                var component = gameObject.GetComponent(field.type);
+                Component component;
+                if (field.fromParent)
+                {
+                    component = gameObject.GetComponentInParent(field.type);
+                }
+                else
+                {
+                    component = gameObject.GetComponent(field.type);
+                }
                 if (!field.optional && component == null)
                 {
                     componentSet = default;
